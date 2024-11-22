@@ -21,3 +21,10 @@ function getComputerChoice() {
     // Return computer's selection
     return choice;
 }
+
+function getHumanChoice() {
+    // Prompt user for choice
+    let choice = prompt('Rock, paper or scissors?');
+    // Return choice
+    return choice;
+}
