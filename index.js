@@ -70,8 +70,28 @@ function playRound(humanChoice, computerChoice) {
     };
 }
 
-// Declare choice variables
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+// Function to run five-round game
+function playGame() {
+
+    // Play round 5 times
+    for (let i = 0; i < 5; i++) {
+        // Get choices
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+    };
+
+    // Determine overall winner
+    let winnerMessage = '';
+    if (humanScore === computerScore) {
+        winnerMessage = 'You tied!';
+    } else if (humanScore > computerScore) {
+        winnerMessage = 'You won!';
+    } else {
+        winnerMessage = 'The computer won :(';
+    }
+    // Display overall score
+    console.log(`${winnerMessage} Your Score: ${humanScore}, Computer Score: ${computerScore}.`);
+}
+
