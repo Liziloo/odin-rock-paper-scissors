@@ -1,3 +1,23 @@
+const body = document.querySelector('#body');
+
+body.addEventListener('click', (event) => {
+    if (event.target.tagName === 'BUTTON') {
+        playRound(event.target.textContent);
+    }
+})
+
+const paperButton = document.createElement('button');
+const rockButton = document.createElement('button')
+const scissorButton = document.createElement('button');
+
+paperButton.textContent = 'Paper';
+rockButton.textContent = 'Rock';
+scissorButton.textContent = 'Scissors';
+
+body.appendChild(rockButton);
+body.appendChild(paperButton);
+body.appendChild(scissorButton);
+
 // Create variables to track computer and human scores
 let humanScore = 0;
 let computerScore = 0;
@@ -33,9 +53,10 @@ function getHumanChoice() {
     return choice;
 }
 
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice) {
     // Convert human choice to uppercase for case-insensitive comparison
     humanChoice = humanChoice.toUpperCase();
+    const computerChoice = getComputerChoice();
 
     // IF computer and human choice the same log a tie
     if (humanChoice === computerChoice) {
@@ -68,30 +89,5 @@ function playRound(humanChoice, computerChoice) {
             };
         };
     };
-}
-
-
-// Function to run five-round game
-function playGame() {
-
-    // Play round 5 times
-    for (let i = 0; i < 5; i++) {
-        // Get choices
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-    };
-
-    // Determine overall winner
-    let winnerMessage = '';
-    if (humanScore === computerScore) {
-        winnerMessage = 'You tied!';
-    } else if (humanScore > computerScore) {
-        winnerMessage = 'You won!';
-    } else {
-        winnerMessage = 'The computer won :(';
-    }
-    // Display overall score
-    console.log(`${winnerMessage} Your Score: ${humanScore}, Computer Score: ${computerScore}.`);
 }
 
