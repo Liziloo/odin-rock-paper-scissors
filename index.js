@@ -61,34 +61,45 @@ function playRound(humanChoice) {
 
     // IF computer and human choice the same log a tie
     if (humanChoice === computerChoice) {
-        resultsDiv.textContent = "It's a tie!";
+        resultsDiv.textContent = `It's a tie! Your Score: ${humanScore}, Computer Score: ${computerScore}`;
     } else {
         // ELSE check each possible human choice against each possible computer choice and log winner
         if (humanChoice === 'ROCK') {
             if (computerChoice === 'PAPER') {
-                resultsDiv.textContent = 'Paper beats rock -- you lose.';
                 computerScore++;
+                resultsDiv.textContent = `Paper beats rock -- you lose. Your Score: ${humanScore}, Computer Score: ${computerScore}`;
             } else {
-                resultsDiv.textContent = 'Rock beats scissors -- you win!';
                 humanScore++;
+                resultsDiv.textContent = `Rock beats scissors -- you win! Your Score: ${humanScore}, Computer Score: ${computerScore}`;
             };
         } else if (humanChoice === 'PAPER') {
             if (computerChoice === 'ROCK') {
-                resultsDiv.textContent = 'Paper beats rock -- you win!';
                 humanScore++;
+                resultsDiv.textContent = `Paper beats rock -- you win! Your Score: ${humanScore}, Computer Score: ${computerScore}`;
             } else {
-                resultsDiv.textContent = 'Scissors beat paper -- you lose.';
                 computerScore++;
+                resultsDiv.textContent = `Scissors beat paper -- you lose. Your Score: ${humanScore}, Computer Score: ${computerScore}`;
             };
         } else {
             if (computerChoice === 'ROCK') {
-                resultsDiv.textContent = 'Rock beats scissors -- you lose.';
                 computerScore++;
+                resultsDiv.textContent = `Rock beats scissors -- you lose. Your Score: ${humanScore}, Computer Score: ${computerScore}`;
             } else {
-                resultsDiv.textContent = 'Scissors beat paper -- you win!';
                 humanScore++;
+                resultsDiv.textContent = `Scissors beat paper -- you win! Your Score: ${humanScore}, Computer Score: ${computerScore}`;
             };
         };
     };
+    if (humanScore >= 5 || computerScore >= 5) {
+        let winnerAnnouncement = '';
+        if (humanScore === 5) {
+            winnerAnnouncement = 'You win!'
+        } else {
+            winnerAnnouncement = 'The computer wins :('
+        }
+        window.alert(winnerAnnouncement);
+        humanScore = 0;
+        computerScore = 0;
+    }
 }
 
